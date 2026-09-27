@@ -35,4 +35,6 @@
         test_command: uptime
         msg: "Reboot initiated by Ansible after patching"
         
-
+    - name: Display CPU
+      ansible.builtin.debug:
+        msg: "CPU: {{ ansible_processor[2] }}"

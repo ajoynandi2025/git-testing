@@ -27,10 +27,3 @@
       when:
         - ansible_distribution == "RedHat"
         - ansible_distribution_major_version in ["8", "9", "10"]
-
-    - name: Reboot server
-      ansible.builtin.reboot:
-        reboot_timeout: 900
-        connect_timeout: 10
-        test_command: uptime
-        msg: "Reboot initiated by Ansible after patching"

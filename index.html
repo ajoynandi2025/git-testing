@@ -5,18 +5,134 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Test Page</title>
   <style>
-    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
-    button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    :root {
+      --navy: #0f2742;
+      --blue: #1d5fd1;
+      --blue-dark: #1749a3;
+      --text: #1e293b;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --green: #15803d;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+    }
+    .bar {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo { font-weight: 700; font-size: 1.15rem; color: var(--navy); }
+    nav a {
+      margin-left: 24px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+    nav a:hover { color: var(--blue); }
+    .hero {
+      background: var(--navy);
+      color: var(--white);
+      text-align: center;
+      padding: 72px 24px;
+    }
+    .hero h1 { margin: 0 0 12px; font-size: 2.4rem; letter-spacing: -0.5px; }
+    .hero p { margin: 0 auto 28px; max-width: 520px; color: #cbd5e1; font-size: 1.1rem; }
+    .hero p.done { color: #86efac; }
+    button {
+      padding: 12px 28px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+      background: var(--blue);
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover { background: var(--blue-dark); }
+    button:focus-visible { outline: 3px solid #93c5fd; outline-offset: 3px; }
+    .features {
+      max-width: 960px;
+      margin: -36px auto 48px;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .feature {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 4px 12px rgba(15, 39, 66, 0.06);
+    }
+    .feature h3 { margin: 0 0 8px; font-size: 1.05rem; color: var(--navy); }
+    .feature p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+    footer {
+      text-align: center;
+      padding: 24px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--line);
+      background: var(--white);
+    }
   </style>
 </head>
 <body>
-  <h1>Hello, World!</h1>
-  <p id="message">This is a test page.</p>
-  <button onclick="changeText()">Click Me</button>
+  <header>
+    <div class="bar">
+      <span class="logo">TestPage</span>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Hello, World!</h1>
+    <p id="message">This is a test page for checking HTML, CSS, and JavaScript.</p>
+    <button onclick="changeText()">Click Me</button>
+  </section>
+
+  <section class="features">
+    <div class="feature">
+      <h3>HTML</h3>
+      <p>Structure is rendering correctly: header, sections, and footer.</p>
+    </div>
+    <div class="feature">
+      <h3>CSS</h3>
+      <p>Colors, spacing, grid layout, and hover effects are applied.</p>
+    </div>
+    <div class="feature">
+      <h3>JavaScript</h3>
+      <p>Click the button above to confirm scripts are running.</p>
+    </div>
+  </section>
+
+  <footer>&copy; 2026 TestPage. All rights reserved.</footer>
 
   <script>
     function changeText() {
-      document.getElementById("message").textContent = "The button works!";
+      const msg = document.getElementById("message");
+      msg.textContent = "The button works! JavaScript is running.";
+      msg.classList.add("done");
     }
   </script>
 </body>

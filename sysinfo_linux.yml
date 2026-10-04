@@ -25,3 +25,5 @@
     - name: Display Architecture
       ansible.builtin.debug:
       msg: "Architecture: {{ ansible_architecture }}"
+
+      d;kcsdk ;lsdkcl; sd

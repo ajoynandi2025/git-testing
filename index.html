@@ -42,8 +42,10 @@
       color: var(--muted);
       text-decoration: none;
       font-size: 0.95rem;
+      padding-bottom: 4px;
     }
     nav a:hover { color: var(--blue); }
+    nav a.active { color: var(--blue); border-bottom: 2px solid var(--blue); }
     .hero {
       background: var(--navy);
       color: var(--white);
@@ -83,6 +85,30 @@
     }
     .feature h3 { margin: 0 0 8px; font-size: 1.05rem; color: var(--navy); }
     .feature p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+    .details {
+      display: none;
+      max-width: 960px;
+      margin: 32px auto 48px;
+      padding: 0 24px;
+    }
+    .details.show { display: block; }
+    .details .panel {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 28px;
+      box-shadow: 0 4px 12px rgba(15, 39, 66, 0.06);
+    }
+    .details h2 { margin: 0 0 16px; color: var(--navy); font-size: 1.4rem; }
+    .details table { width: 100%; border-collapse: collapse; }
+    .details th, .details td {
+      text-align: left;
+      padding: 12px 8px;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.98rem;
+    }
+    .details th { width: 40%; color: var(--muted); font-weight: 600; }
+    .details tr:last-child th, .details tr:last-child td { border-bottom: none; }
     footer {
       text-align: center;
       padding: 24px;
@@ -98,7 +124,7 @@
     <div class="bar">
       <span class="logo">PantuLadu</span>
       <nav>
-        <a href="#">Home</a>
+        <a href="#" id="homeLink" onclick="toggleDetails(event)">Home</a>
         <a href="#">About</a>
         <a href="#">Contact</a>
       </nav>
@@ -109,6 +135,18 @@
     <h1>Adwik Nandi (Pantu)</h1>
     <p id="message">This is a test page for checking HTML, CSS, and JavaScript.</p>
     <button onclick="changeText()">Click Me</button>
+  </section>
+
+  <section class="details" id="details">
+    <div class="panel">
+      <h2>Home Details</h2>
+      <table>
+        <tr><th>Full Name</th><td>Adwik Nandi</td></tr>
+        <tr><th>Nickname</th><td>Pantu</td></tr>
+        <tr><th>Father's Name</th><td>Ajoy Nandi</td></tr>
+        <tr><th>Website</th><td>PantuLadu</td></tr>
+      </table>
+    </div>
   </section>
 
   <section class="features">
@@ -133,6 +171,12 @@
       const msg = document.getElementById("message");
       msg.textContent = "My Father Name is Ajoy Nandi";
       msg.classList.add("done");
+    }
+
+    function toggleDetails(e) {
+      e.preventDefault();
+      document.getElementById("details").classList.toggle("show");
+      document.getElementById("homeLink").classList.toggle("active");
     }
   </script>
 </body>

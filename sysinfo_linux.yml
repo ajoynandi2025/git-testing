@@ -26,4 +26,6 @@
       ansible.builtin.debug:
       msg: "Architecture: {{ ansible_architecture }}"
 
-      d;kcsdk ;lsdkcl; sd
+      d;kcsdk ;lsdkcl; sdclear
+
+      ljkdc lkdnc dck sdckmsdkc ksdcm ksdmck ------------v3

@@ -1,0 +1,33 @@
+---
+- name: Collect RHEL System Information
+  hosts: all
+  become: true
+  gather_facts: true
+
+  tasks:
+
+    - name: Display Hostname
+      ansible.builtin.debug:
+        msg: "Hostname: {{ ansible_hostname }}"
+
+    - name: Display FQDN
+      ansible.builtin.debug:
+        msg: "FQDN: {{ ansible_fqdn }}"
+
+    - name: Display IP Address
+      ansible.builtin.debug:
+        msg: "IP Address: {{ ansible_default_ipv4.address }}"
+
+    - name: Display OS Name
+      ansible.builtin.debug:
+        msg: "OS Name: {{ ansible_distribution }}"
+
+    - name: Display Architecture
+      ansible.builtin.debug:
+      msg: "Architecture: {{ ansible_architecture }}"
+
+      d;kcsdk ;lsdkcl; sdclear
+
+      ljkdc lkdnc dck sdckmsdkc ksdcm ksdmck ------------v3
+      jldsncsdnc sdc -------------v4
+      jdncjd cdncnsd----------------v5

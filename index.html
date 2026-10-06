@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PantuLaddu</title>
+  <title>PantuLadu</title>
   <style>
     :root {
       --navy: #0f2742;
@@ -85,21 +85,23 @@
     }
     .feature h3 { margin: 0 0 8px; font-size: 1.05rem; color: var(--navy); }
     .feature p { margin: 0; color: var(--muted); font-size: 0.95rem; }
-    .details {
+    .details, .about {
       display: none;
       max-width: 960px;
       margin: 32px auto 48px;
       padding: 0 24px;
     }
-    .details.show { display: block; }
-    .details .panel {
+    .details.show, .about.show { display: block; }
+    .details .panel, .about .panel {
       background: var(--white);
       border: 1px solid var(--line);
       border-radius: 8px;
       padding: 28px;
       box-shadow: 0 4px 12px rgba(15, 39, 66, 0.06);
     }
-    .details h2 { margin: 0 0 16px; color: var(--navy); font-size: 1.4rem; }
+    .details h2, .about h2 { margin: 0 0 16px; color: var(--navy); font-size: 1.4rem; }
+    .about p { margin: 0 0 12px; color: var(--text); }
+    .about p:last-child { margin-bottom: 0; }
     .details table { width: 100%; border-collapse: collapse; }
     .details th, .details td {
       text-align: left;
@@ -122,10 +124,10 @@
 <body>
   <header>
     <div class="bar">
-      <span class="logo">PantuLaddu</span>
+      <span class="logo">PantuLadu</span>
       <nav>
-        <a href="#" id="homeLink" onclick="toggleDetails(event)">Home</a>
-        <a href="#">About</a>
+        <a href="#" id="homeLink" onclick="showPanel(event, 'details', 'homeLink')">Home</a>
+        <a href="#" id="aboutLink" onclick="showPanel(event, 'about', 'aboutLink')">About</a>
         <a href="#">Contact</a>
       </nav>
     </div>
@@ -144,8 +146,17 @@
         <tr><th>Full Name</th><td>Adwik Nandi</td></tr>
         <tr><th>Nickname</th><td>Pantu</td></tr>
         <tr><th>Father's Name</th><td>Ajoy Nandi</td></tr>
-        <tr><th>Website</th><td>PantuLaddu</td></tr>
+        <tr><th>Website</th><td>PantuLadu</td></tr>
       </table>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="panel">
+      <h2>About Me</h2>
+      <p>Hello! I am Adwik Nandi, and everyone calls me Pantu. Welcome to my page, PantuLadu.</p>
+      <p>My father's name is Ajoy Nandi. This page is my first project, built with HTML, CSS, and JavaScript to learn how websites work.</p>
+      <p>I am learning web design step by step, and I will keep adding new things to this page.</p>
     </div>
   </section>
 
@@ -173,10 +184,16 @@
       msg.classList.add("done");
     }
 
-    function toggleDetails(e) {
+    function showPanel(e, panelId, linkId) {
       e.preventDefault();
-      document.getElementById("details").classList.toggle("show");
-      document.getElementById("homeLink").classList.toggle("active");
+      const panel = document.getElementById(panelId);
+      const wasOpen = panel.classList.contains("show");
+      document.querySelectorAll(".details, .about").forEach(el => el.classList.remove("show"));
+      document.querySelectorAll("nav a").forEach(a => a.classList.remove("active"));
+      if (!wasOpen) {
+        panel.classList.add("show");
+        document.getElementById(linkId).classList.add("active");
+      }
     }
   </script>
 </body>
